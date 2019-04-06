@@ -40,28 +40,14 @@ namespace Memoria.Scripts.Battle
                 }
             }
 
-            if (_v.Caster.HasSupportAbility(SupportAbility1.MasterThief))
-            {
-                if (enemy.StealableItems[3] != Byte.MaxValue && GameRandom.Next8() < 32)
-                    StealItem(enemy, 3);
-                else if (enemy.StealableItems[2] != Byte.MaxValue && GameRandom.Next8() < 32)
-                    StealItem(enemy, 2);
-                else if (enemy.StealableItems[1] != Byte.MaxValue && GameRandom.Next8() < 64)
-                    StealItem(enemy, 1);
-                else
-                    StealItem(enemy, 0);
-            }
+            if (enemy.StealableItems[3] != Byte.MaxValue)
+                StealItem(enemy, 3);
+            else if (enemy.StealableItems[2] != Byte.MaxValue)
+                StealItem(enemy, 2);
+            else if (enemy.StealableItems[1] != Byte.MaxValue)
+                StealItem(enemy, 1);
             else
-            {
-                if (GameRandom.Next8() < 1)
-                    StealItem(enemy, 3);
-                else if (GameRandom.Next8() < 16)
-                    StealItem(enemy, 2);
-                else if (GameRandom.Next8() < 64)
-                    StealItem(enemy, 1);
-                else
-                    StealItem(enemy, 0);
-            }
+                StealItem(enemy, 0);
         }
 
         private static Boolean HasStealableItems(BattleEnemy enemy)
